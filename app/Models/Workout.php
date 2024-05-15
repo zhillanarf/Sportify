@@ -4,12 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Program extends Model
+class Workout extends Model
 {
     use HasFactory;
-    protected $table = 'programs';
+    protected $table = 'workouts';
     protected $primaryKey = 'id';
     protected $keyType = 'int';
 
@@ -17,11 +17,10 @@ class Program extends Model
         'name',
         'description',
         'image',
-        'durasi',
     ];
 
-    public function workouts(): BelongsTo
+    public function programs(): HasMany
     {
-        return $this->belongsTo(Workout::class, 'workout_id', 'id');
+        return $this->hasMany(Program::class, 'workout_id', 'id');
     }
 }

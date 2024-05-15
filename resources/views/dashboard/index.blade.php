@@ -1,19 +1,19 @@
-@extends('dashboard.template')
+@extends('dashboard.layouts.template')
 @section('content')
 <div class="content">
   <h2>Dashboard</h2>
   <div id="dashboard">
     <div class="dashboard-box">
       <h3>Total Users</h3>
-      <p>100</p>
+      <p>{{$users->count()}}</p>
     </div>
     <div class="dashboard-box">
       <h3>Total Programs</h3>
-      <p>50</p>
+      <p>{{$programs->count()}}</p>
     </div>
     <div class="dashboard-box">
       <h3>Total Workouts</h3>
-      <p>200</p>
+      <p>{{$workouts->count()}}</p>
     </div>
   </div>
 </div>

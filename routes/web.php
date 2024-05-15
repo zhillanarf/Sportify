@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use  App\Http\Controllers\UserController;
 use  App\Http\Controllers\DashboardController;
+use  App\Http\Controllers\ProgramController;
+use  App\Http\Controllers\WorkoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,11 +28,11 @@ Route::get('/programs', function () {
     return view('programs');
 })->name('programs');
 
-Route::middleware(["auth"])->controller(DashboardController::class)->prefix('dashboard')->group(function () {
-    Route::get('/', 'index')->name('dashboard.admin');
-    Route::get('/users', 'users')->name('dashboard.users');
-    Route::get('/programs', 'programs')->name('dashboard.programs');
-    Route::get('/workouts', 'workouts')->name('dashboard.workouts');
+Route::middleware(["auth", 'verified'])->prefix('dashboard')->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
+    Route::resource('programs', ProgramController::class);
+    Route::resource('workouts', WorkoutController::class);
+    Route::resource('users', UserController::class);
 });
 
 Route::controller(UserController::class)->group(function () {

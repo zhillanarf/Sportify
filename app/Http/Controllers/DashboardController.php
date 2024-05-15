@@ -3,19 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Program;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use App\Models\Workout;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        if (Auth::user()->role == 'admin') {
-            return view('dashboard.admin');
-        } else {
-            return view('welcome');
-        }
-        return Auth::user()->role == 'admin' ? view('dashboard.admin') : view('welcome');
+        return Auth::user()->role == 'admin' ? view('dashboard.index', ['users' => User::all(), 'programs' => Program::all(), 'workouts' => Workout::all()]) : view('welcome');
     }
 
     public function users()

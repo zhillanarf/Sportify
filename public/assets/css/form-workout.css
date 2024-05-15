@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
+
+* {
+    box-sizing: border-box;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    font-size: 1.7rem;
+    padding: 1rem 3rem;
+    background: var(--secondary-color);
+    color: var(--white);
+    text-align: center;
+}
+
+.btn:hover {
+    background: var(--secondary-color-dark);
+}
+
+.message {
+    display: block;
+    background: var(--bg-color);
+    padding: 1.5rem 1rem;
+    font-size: 2rem;
+    color: var(--black);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.container {
+    max-width: 1200px;
+    padding: 2rem;
+    margin: 0 auto;
+}
+
+.admin-workout-form-container.centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.admin-workout-form-container form {
+    max-width: 50rem;
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    background: var(--primary-color-light);
+    color: var(--text-light);
+}
+
+.admin-workout-form-container form input::placeholder {
+    color: var(--text-light);
+}
+
+.admin-workout-form-container form input:focus {
+    color: var(--text-light);
+}
+
+.admin-workout-form-container form h3 {
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+.admin-workout-form-container form .box {
+    width: 100%;
+    border-radius: 0.5rem;
+    padding: 1.2rem 1.5rem;
+    font-size: 1.7rem;
+    margin: 1rem 0;
+    background: var(--primary-color-extra-light);
+    text-transform: none;
+}
+
+.workout-display {
+    margin: 2rem 0;
+}
+
+.workout-display .workout-display-table {
+    width: 100%;
+    text-align: center;
+    color: var(--white);
+}
+
+.workout-display .workout-display-table thead {
+    background: var(--primary-color-light);
+}
+
+.workout-display .workout-display-table th {
+    padding: 1rem;
+    font-size: 2rem;
+}
+
+.workout-display .workout-display-table td {
+    padding: 1rem;
+    font-size: 2rem;
+    border-bottom: var(--border);
+    color: var(--text-light);
+}
+
+.workout-display .workout-display-table .btn:first-child {
+    margin-top: 0;
+}
+
+.workout-display .workout-display-table .btn:last-child {
+    background: crimson;
+}
+
+.workout-display .workout-display-table .btn:last-child:hover {
+    background: var(--red-dark);
+}
+
+@media (max-width: 991px) {
+    html {
+        font-size: 55%;
+    }
+}
+
+@media (max-width: 768px) {
+    .workout-display {
+        overflow-y: scroll;
+    }
+
+    .workout-display .workout-display-table {
+        width: 80rem;
+    }
+}
+
+@media (max-width: 450px) {
+    html {
+        font-size: 50%;
+    }
+}
