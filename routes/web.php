@@ -5,6 +5,7 @@ use  App\Http\Controllers\UserController;
 use  App\Http\Controllers\DashboardController;
 use  App\Http\Controllers\ProgramController;
 use  App\Http\Controllers\WorkoutController;
+use App\Models\Workout;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,7 @@ Route::get('/', function () {
 })->name('welcome');
 
 Route::get('/workouts', function () {
-    return view('workouts');
+    return view('workouts', ['workouts' => Workout::all()]);
 })->name('workouts');
 Route::get('/programs', function () {
     return view('programs');

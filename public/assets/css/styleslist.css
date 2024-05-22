@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
 
 :root {
     --primary-color: #000000;
@@ -9,35 +9,35 @@
     --text-light: #d1d5db;
     --white: #ffffff;
     --max-width: 1200px;
-  }
+}
 
 /* Reset default margin and padding */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  /* Body styling */
-  body {
-    font-family: 'Poppins', sans-serif;
+}
+
+/* Body styling */
+body {
+    font-family: "Poppins", sans-serif;
     line-height: 1.6;
     background-color: var(--primary-color);
-  }
+}
 
-  .btn {
+.btn {
     display: inline-block;
-    background:var(--secondary-color);
-    color:var(--white);
+    background: var(--secondary-color);
+    color: var(--white);
     font-size: 17px;
     border-radius: 5px;
     padding: 8px 25px;
-  }
-  
-  .btn:hover {
+}
+
+.btn:hover {
     background-color: var(--secondary-color-dark);
     letter-spacing: 1px;
-  }
+}
 
 nav {
     max-width: var(--max-width);
@@ -47,26 +47,26 @@ nav {
     align-items: center;
     justify-content: space-between;
     gap: 2rem;
-  }
-  
-  .nav__logo {
+}
+
+.nav__logo {
     max-width: 130px;
-  }
-  
-  .nav__links {
+}
+
+.nav__links {
     list-style: none;
     display: flex;
     align-items: center;
     gap: 3rem;
-  }
-  
-  .link a {
+}
+
+.link a {
     position: relative;
     padding-bottom: 0.75rem;
     color: var(--white);
-  }
-  
-  .link a::after {
+}
+
+.link a::after {
     content: "";
     position: absolute;
     height: 2px;
@@ -75,93 +75,98 @@ nav {
     bottom: 0;
     background-color: var(--secondary-color);
     transition: 0.3s;
-  }
-  
-  .link a:hover::after {
+}
+
+.link a:hover::after {
     width: 50%;
-  }
-  
-  .container{
+}
+
+.container {
     background: var(--primary-color);
-    padding:15px 9%;
+    padding: 15px 9%;
     padding-bottom: 100px;
 }
 
-.container .heading{
+.container .heading {
     text-align: center;
     padding-bottom: 15px;
-    color:var(--white);
+    color: var(--white);
     text-shadow: 0 5px 10px var(--primary-color);
     font-size: 50px;
 }
 
-.container .box-container{
+.container .box-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-    gap:15px;
+    gap: 15px;
 }
 
-.container .box-container .box{
-    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+.container .box-container .box {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     background: var(--primary-color-light);
     text-align: center;
-    padding:30px 20px;
+    padding: 30px 20px;
     transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
     margin-bottom: 1px;
     margin-top: 5px;
 }
 
-.container .box-container .box img{
+.container .box-container .box img {
     height: 40%;
     width: 80%;
     object-fit: cover;
 }
 
-.container .box-container .box h3{
-    color:var(--text-light);
+.container .box-container .box h3 {
+    color: var(--text-light);
     font-size: 22px;
-    padding:10px 0;
+    padding: 10px 0;
 }
 
-.container .box-container .box p{
-    color:var(--text-light);
+.container .box-container .box p {
+    color: var(--text-light);
     font-size: 15px;
     line-height: 1.8;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* jumlah baris yang diinginkan */
+    -webkit-box-orient: vertical;
 }
 
-.container .box-container .box .btn{
+.container .box-container .box .btn {
     margin-top: 10px;
     display: inline-block;
-    background:var(--secondary-color);
-    color:var(--white);
+    background: var(--secondary-color);
+    color: var(--white);
     font-size: 17px;
     border-radius: 5px;
     padding: 8px 25px;
     transition: box-shadow 0.2s ease, transform 0.3s ease;
 }
 
-.container .box-container .box .btn:hover{
+.container .box-container .box .btn:hover {
     letter-spacing: 1px;
     background-color: var(--secondary-color-dark);
     transform: scale(1.02);
 }
 
-.container .box-container .box:hover{
-    box-shadow: 0 10px 15px rgba(0,0,0,.3);
+.container .box-container .box:hover {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
     transform: scale(1.03);
 }
-  
-.heading{
+
+.heading {
     text-align: center;
     padding-bottom: 15px;
-    color:var(--white);
+    color: var(--white);
     text-shadow: 0 5px 10px var(--primary-color);
     font-size: 23px;
 }
 
-  /* Comment section styling */
-  .comment-section {
+/* Comment section styling */
+.comment-section {
     background-color: var(--primary-color-light);
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -169,57 +174,56 @@ nav {
     margin: 20px auto;
     margin-top: 1px;
     max-width: 600px;
-  }
-  
-  .comment-section h2 {
+}
+
+.comment-section h2 {
     margin-bottom: 20px;
     color: var(--secondary-color);
-  }
-  
-  .comment-section .user-profile {
+}
+
+.comment-section .user-profile {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-  }
-  
-  .comment-section .user-profile img {
+}
+
+.comment-section .user-profile img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
     margin-right: 10px;
-  }
-  
-  .comment-section .user-profile .user-name {
+}
+
+.comment-section .user-profile .user-name {
     font-weight: bold;
     font-size: 18px;
     color: var(--secondary-color);
-  }
-  
-  .comment-section form label {
+}
+
+.comment-section form label {
     display: block;
     margin-bottom: 5px;
     color: var(--text-light);
-  }
-  
-  .comment-section form textarea {
+}
+
+.comment-section form textarea {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: vertical;
-  }
-  
-  .comment-section form input[type="submit"] {
+}
+
+.comment-section form input[type="submit"] {
     background-color: #007bff;
     color: #fff;
     border: none;
     padding: 12px 20px;
     border-radius: 4px;
     cursor: pointer;
-  }
-  
-  .comment-section form input[type="submit"]:hover {
+}
+
+.comment-section form input[type="submit"]:hover {
     background-color: #0056b3;
-  }
-  
+}
