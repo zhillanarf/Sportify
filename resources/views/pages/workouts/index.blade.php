@@ -9,7 +9,9 @@
            @foreach ($workouts as $workout)   
            <div class="box">
             @if ($workout->image)
-                <img src="{{asset('assets/images/'.$workout->image)}}" alt="">
+                {{-- <img src="{{asset('assets/images/'.$workout->image)}}" alt=""> --}}
+                <img src="{{asset($workout->image)}}" alt="">
+
             @else
                 <img src="{{asset('assets/images/wobenchpress.jpeg')}}" alt="">
             @endif

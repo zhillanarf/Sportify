@@ -12,9 +12,6 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
     protected $table = 'users';
-    protected $primaryKey = 'email';
-    protected $keyType = 'string';
-    public $incrementing = false;
     /**
      * The attributes that are mass assignable.
      *
@@ -45,4 +42,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function programs(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Program::class);
+    }
+
+    public function comments(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

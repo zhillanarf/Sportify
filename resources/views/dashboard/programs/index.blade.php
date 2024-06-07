@@ -2,16 +2,13 @@
 @section('content')
 <div class="content">
   <h2>Programs</h2>
-  <button>Tambah Program Baru</button>
+  <button onclick="window.location.href='{{route('programs.create')}}'">Tambah Program Baru</button>
   <table>
     <thead>
       <tr>
-        <th>Image</th>
         <th>Nama Program</th>
         <th>Deskripsi Program</th>
-        <th>Created at</th>
-        <th>Updated at</th>
-        <th>Id Workout</th>
+        <th>Pembuat Program</th>
         <th>Durasi (Hari)</th>
         <th>Action</th>
       </tr>
@@ -19,14 +16,12 @@
     <tbody>
       @foreach ($programs as $program)
       <tr>
-        <td><img src="{{asset('assets/images/'.$program->image)}}" alt="{{$program->name}}" width="100"></td>
         <td>{{$program->title}}</td>
         <td>{{$program->description}}</td>
-        <td>{{$program->created_at}}</td>
-        <td>{{$program->updated_at}}</td>
-        <td>{{$program->workout_id}}</td>
-        <td>{{$program->durasi}}</td>
-        <td>
+        <td>{{$program->user->name}}</td>
+        <td>{{$program->duration}}</td>
+        <td class="d-flex justify-content-center">
+          <button onclick="window.location.href='{{route('programs.show', $program->id)}}'">Show</button>
           <button onclick="window.location.href='{{route('programs.edit', $program->id)}}'">Edit</button>
           <form action="{{ route('programs.destroy', $program->id) }}" method="POST">
             @csrf
@@ -42,4 +37,4 @@
   </table>
 </div>
 
-@endsection
+@endsectionp

@@ -6,6 +6,10 @@ use App\Models\Program;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProgramRequest;
 use App\Http\Requests\UpdateProgramRequest;
+use App\Models\ProgramWorkout;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Workout;
+use Illuminate\Support\Facades\DB;
 
 class ProgramController extends Controller
 {
@@ -14,9 +18,15 @@ class ProgramController extends Controller
      */
     public function index()
     {
-        return view('dashboard.programs.index', [
-            'programs' => Program::all(),
-        ]);
+        if (Auth::user()->role == 'admin') {
+            return view('dashboard.programs.index', [
+                'programs' => Program::all(),
+            ]);
+        } else {
+            return view('pages.programs.index', [
+                'programs' => Program::all(),
+            ]);
+        }
     }
 
     /**
@@ -24,7 +34,13 @@ class ProgramController extends Controller
      */
     public function create()
     {
-        return view('dashboard.programs.create');
+        if (Auth::user()->role == 'admin') {
+            $workouts = Workout::all();
+            return view('dashboard.programs.create', compact('workouts'));
+        } else {
+            $workouts = Workout::all();
+            return view('pages.programs.create', compact('workouts'));
+        }
     }
 
     /**
@@ -32,15 +48,50 @@ class ProgramController extends Controller
      */
     public function store(StoreProgramRequest $request)
     {
-        //
-    }
+        DB::beginTransaction();
 
+        try {
+            // Membuat entri baru di tabel 'programs' dan menyimpan data yang terkait
+            $program = Program::create([
+                'title' => $request->title,
+                'description' => $request->description,
+                'duration' => $request->duration,
+                'user_id' => $request->user_id,
+            ]);
+
+            // Menyimpan setiap workout yang terkait dengan program
+            foreach ($request->workouts as $workout) {
+                ProgramWorkout::create([
+                    'program_id' => $program->id,
+                    'workout_id' => $workout['id'],
+                    'reps' => $workout['reps'],
+                    'sets' => $workout['sets'],
+                ]);
+            }
+
+            DB::commit();
+
+            return redirect()->route('programs.index')->with('success', 'Program created successfully');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            // Kembalikan user ke halaman create dengan pesan error dan input sebelumnya
+            return redirect()->route('programs.create')->with('error', 'Program failed to create: ' . $e->getMessage())->withInput();
+        }
+    }
     /**
      * Display the specified resource.
      */
     public function show(Program $program)
     {
-        //
+        if (Auth::user()->role == 'admin') {
+            $program = Program::with(['user', 'program_workouts.workout'])->findOrFail($program->id);
+
+            return view('dashboard.programs.show', compact('program'));
+        } else {
+            $program = Program::with(['user', 'program_workouts.workout'])->findOrFail($program->id);
+
+            return view('pages.programs.show', compact('program'));
+        }
     }
 
     /**

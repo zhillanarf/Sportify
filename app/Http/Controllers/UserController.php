@@ -17,7 +17,7 @@ class UserController extends Controller
 
     public function login()
     {
-        return view('login');
+        return view('auth.login');
     }
 
     public function doLogin(Request $request)
@@ -45,12 +45,12 @@ class UserController extends Controller
     public function doLogout()
     {
         Auth::logout();
-        return redirect('/login');
+        return redirect()->route('login')->with('success', 'You have been logged out.');
     }
 
     public function register()
     {
-        return view('register');
+        return view('auth.register');
     }
 
     public function doRegister(Request $request)
@@ -63,7 +63,7 @@ class UserController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect('/register')
+            return redirect()->route('register')
                 ->withErrors($validator)
                 ->withInput();
         }

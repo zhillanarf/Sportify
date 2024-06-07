@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('programs', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable(false);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('title')->nullable(false);
-            $table->text('description');
-            $table->integer('duration')->nullable(false);
+            $table->unsignedBigInteger('program_id')->nullable(false);
+            $table->foreign('program_id')->references('id')->on('programs')->onDelete('cascade');
+            $table->text('content')->nullable(false);
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('programs');
+        Schema::dropIfExists('comments');
     }
 };

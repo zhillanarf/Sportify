@@ -19,8 +19,8 @@ class Workout extends Model
         'image',
     ];
 
-    public function programs(): HasMany
+    public function program_workouts(): HasMany
     {
-        return $this->hasMany(Program::class, 'workout_id', 'id');
+        return $this->hasMany(ProgramWorkout::class);
     }
 }

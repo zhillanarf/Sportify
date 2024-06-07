@@ -4,8 +4,8 @@
   </div>
   <ul class="nav__links">
     <li class="link"><a href="{{ route('welcome') }}">Home</a></li>
-    <li class="link"><a href="{{route('programs')}}">Program</a></li>
-    <li class="link"><a href="{{ route('workouts') }}">Workout</a></li>
+    <li class="link"><a href="{{route('programs.index')}}">Program</a></li>
+    <li class="link"><a href="{{ route('workouts.index') }}">Workout</a></li>
     <li class="link"><a href="">About Us</a></li>
   </ul>
 

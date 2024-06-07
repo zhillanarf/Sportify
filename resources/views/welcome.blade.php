@@ -1,4 +1,4 @@
-@extends('template')
+@extends('layouts.template')
 @section('content')
 <header class="section__container header__container">
     <div class="header__content">
@@ -12,7 +12,7 @@
         and witness the incredible transformation your body is capable of!
       </p>
       @if (Auth::user())
-      <button onclick="window.location.href='{{ route('programs') }}'" class="btn">Get Started</button>
+      <button onclick="window.location.href='{{ route('programs.index') }}'" class="btn">Get Started</button>
       @else
       <button onclick="window.location.href='{{ route('login') }}'" class="btn">Get Started</button>
       @endif

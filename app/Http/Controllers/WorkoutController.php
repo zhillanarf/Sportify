@@ -8,6 +8,7 @@ use App\Http\Requests\StoreWorkoutRequest;
 use App\Http\Requests\UpdateWorkoutRequest;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Auth;
 
 class WorkoutController extends Controller
 {
@@ -16,9 +17,15 @@ class WorkoutController extends Controller
      */
     public function index()
     {
-        return view('dashboard.workouts.index', [
-            'workouts' => Workout::all(),
-        ]);
+        if (Auth::user()->role == 'admin') {
+            return view('dashboard.workouts.index', [
+                'workouts' => Workout::all(),
+            ]);
+        } else {
+            return view('pages.workouts.index', [
+                'workouts' => Workout::all(),
+            ]);
+        }
     }
 
     /**

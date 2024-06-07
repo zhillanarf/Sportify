@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class WorkoutFactory extends Factory
 {
+    protected $model = \App\Models\Workout::class;
     /**
      * Define the model's default state.
      *
@@ -19,7 +20,6 @@ class WorkoutFactory extends Factory
         return [
             'name' => $this->faker->name,
             'description' => $this->faker->text,
-            'image' => $this->faker->imageUrl(),
             'created_at' => $this->faker->dateTimeThisYear(),
             'updated_at' => $this->faker->dateTimeThisYear(),
         ];

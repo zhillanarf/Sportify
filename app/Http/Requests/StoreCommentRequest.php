@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class StoreProgramRequest extends FormRequest
+class StoreCommentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,14 +23,9 @@ class StoreProgramRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'duration' => 'required',
+            'content' => 'required|string',
             'user_id' => 'required|exists:users,id',
-            'workouts' => 'required|array',
-            'workouts.*.id' => 'required|exists:workouts,id',
-            'workouts.*.reps' => 'required',
-            'workouts.*.sets' => 'required',
+            'program_id' => 'required|exists:programs,id',
         ];
     }
 }

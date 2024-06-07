@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Program extends Model
 {
@@ -14,14 +15,24 @@ class Program extends Model
     protected $keyType = 'int';
 
     protected $fillable = [
-        'name',
+        'title',
         'description',
-        'image',
-        'durasi',
+        'user_id',
+        'duration'
     ];
 
-    public function workouts(): BelongsTo
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(Workout::class, 'workout_id', 'id');
+        return $this->belongsTo(User::class);
+    }
+
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function program_workouts(): HasMany
+    {
+        return $this->hasMany(ProgramWorkout::class);
     }
 }
