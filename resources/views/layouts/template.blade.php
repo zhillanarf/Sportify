@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="{{asset('assets/css/styles1.css')}}" />
   <link rel="stylesheet" href="{{asset('assets/css/styleslist.css')}}" />
 
+
   <title>Sportify</title>
 </head>
 

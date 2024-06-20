@@ -6,6 +6,8 @@ use  App\Http\Controllers\DashboardController;
 use  App\Http\Controllers\ProgramController;
 use  App\Http\Controllers\WorkoutController;
 use  App\Http\Controllers\CommentController;
+use  App\Http\Controllers\PageController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +28,7 @@ Route::get('/', function () {
 Route::prefix('/')->group(function () {
     Route::resource('workouts', WorkoutController::class);
     Route::resource('programs', ProgramController::class);
+    Route::get('about' , [PageController::class, 'about'])->name('about');
 });
 
 Route::middleware(["auth", 'verified'])->prefix('dashboard')->group(function () {

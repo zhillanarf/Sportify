@@ -14,6 +14,11 @@
           </div>
        </div>
        <div class="form-container">
+        @if ($errors->any())
+        @foreach ($errors as $error)
+        <li>{{$error}}</li>
+        @endforeach
+        @endif
           <div class="form-inner">
              <form action="{{route('doRegister')}}" method="post" class="signup">
               @csrf
